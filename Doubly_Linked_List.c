@@ -70,7 +70,7 @@ int main() {
         case 4:
         printf("Enter data you want to insert\n");
         scanf("%d", &num);
-        printf("Enter the position where you want to insert %d", num);
+        printf("Enter the position where you want to insert %d\n", num);
         scanf("%d", &position);
         head = insertany(num, position, head);
         break;
@@ -156,6 +156,11 @@ struct node * insertany(int data, int position, struct node *head) {
     ptr=head;
     p->data = data;
     
+     if(position == 1) {
+        printf("Please choose option 2 to insert an element in the beginning\n\n");
+        return head;
+    }
+    
     int i=1;
     while(i!=position) {
         ptr = ptr->next;
@@ -206,6 +211,10 @@ struct node * delany(int position, struct node *head) {
     struct node *ahead;
     ahead = (struct node *)malloc(sizeof(struct node));
     ahead=head;
+    if(position ==1) {
+        printf("Please select option 5 to delete the first element of the list\n\n");
+        return head;
+               }
     
     int i=1;
     while(i<position) {
