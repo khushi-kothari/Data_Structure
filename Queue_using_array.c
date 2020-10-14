@@ -45,7 +45,7 @@ int main()
 }
 
 int isEmpty() {
-    if(rear == -1 && front == -1) {
+    if((rear == -1 && front == -1) || (front>rear)) {
         return 0; //true
     }
     else
@@ -69,22 +69,23 @@ void Enqueue(int a) {
 }
 
 void Dequeue() {
-    if(isEmpty()==0) {
-        printf("Queue is empty\n");
-        return;
-    }
-    else if(rear<=-1) {
+    if(front>rear) {
     printf("Underflow error\n");
     return;
     }
     
+    else if(isEmpty()==0) {
+        printf("Queue is empty\n");
+        return;
+    }
+    
     else {
-        rear--;
+        front++;
     }
 }
 
 void Display() {
-    if(rear==-1)
+    if(isEmpty()==0)
         printf("Queue is empty\n");
 
     else {
